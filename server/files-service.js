@@ -11,7 +11,6 @@ class FilesService {
         try {
             const filename = uuid.v4() + '.jpg';
             const staticDir = path.resolve('static');
-            if (fs.ex)
             const pathname = path.resolve('static', filename);
             
             await file.mv(pathname);

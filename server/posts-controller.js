@@ -3,12 +3,12 @@ import postsService from "./posts-service.js"
 class PostsController {
     async create(req, res) {
         try {
-            const { picture } = req.files;
+            const picture = req.files?.picture;
             const { author, content, title } = req.body;
             const post = await postsService.create({ author, content, title }, picture);
             res.json({ data: post });
         } catch (e) {
-            res.status(500).json({ error: e })
+            res.status(500).json({ error: e.message })
         }
     }
 
