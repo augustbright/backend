@@ -55,6 +55,7 @@ export default {
 .body {
     display: flex;
     flex: 1 0 auto;
+    column-gap: 10px;
 }
 
 .img {

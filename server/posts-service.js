@@ -21,13 +21,21 @@ class PostsService {
         return Post.findById(id);
     }
 
-    update(id, post) {
+    async update(id, post, picture) {
         if (!id) {
             throw new Error('Id is missing');
         }
         if (!post) {
             throw new Error('Post data is missing');
         }
+        if (picture) {
+            const filename = await filesService.saveJpg(picture);
+            post.picture = filename;
+        }
+        if (post.picture === 'null') {
+            post.picture = null;
+        }
+
         return Post.findByIdAndUpdate(id, post, { new: true });
     }
 
